@@ -1,17 +1,17 @@
-class DatabaseService{
-    constructor(databaseClient){
+class DatabaseService {
+    constructor(databaseClient) {
         this.databaseClient = databaseClient;
     }
 
-    async get(query){
-        return await this.databaseClient.get(query);
+    async get(query) {
+        return this.databaseClient.get(query);
     }
-   
-    async put(object){
-        return await this.databaseClient.put(object);
+
+    async put(object) {
+        this.databaseClient.put(object);
     }
 }
 
 module.exports = {
-    DatabaseService
-}
+    DatabaseService,
+};
