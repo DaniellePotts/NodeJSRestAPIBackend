@@ -2,10 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const logger = require('logger').createLogger('development.log');
-
 const app = express();
-const port = 3000;
+
+const Logger = require('./logging/logger').Logger;
+const logger = new Logger("baseline");
+
+const Setup = require('./utils/setup').Setup;
+
+const config = Setup.getConfigs();
+const port = config.port;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -13,7 +18,5 @@ app.use(cors());
 app.use("/helloWorld", require("./routes/helloWorld"));
 
 app.listen(port, () => {
-    logger.debug(`NEPO template app listening @ http://localhost:${port}`);
+    logger.info(`${Setup.getConfigs().service} template app listening @ ${config.host}:${port}`);
 });
-
-

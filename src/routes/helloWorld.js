@@ -6,7 +6,6 @@ const HelloWorldController = require('../controllers/helloWorldController').Hell
 
 router.get('/:name', async (req, res) => {
     const helloWorldController = new HelloWorldController();
-
     res.send(helloWorldController.sayHello(req.params.name));
 });
 
