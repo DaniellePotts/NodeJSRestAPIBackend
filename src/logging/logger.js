@@ -11,7 +11,7 @@ class Logger {
                 new winston.transports.File({
                     filename: `./logs/${
                         Setup.getConfigs().service
-                    }-${DateUtils.formatDateString(new Date())}_log.log`,
+                    }-${DateUtils.formatDateString(new Date())}-log.log`,
                 }),
             ],
         });
