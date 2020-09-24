@@ -1,9 +1,8 @@
-class DateUtils {
-    static formatDateString(date) {
-        return `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
-    }
-}
-
 module.exports = {
-    DateUtils,
+    formatDateString(date) {
+        return `${date.getDate()}-${(date.getMonth() + 1)}-${date.getFullYear()}`;
+    },
+    formatTimeString(date) {
+        return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    },
 };

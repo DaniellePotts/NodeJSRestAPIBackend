@@ -1,6 +1,0 @@
-{
-  "config": "default",
-  "service": "baseline",
-  "host": "http://localhost",
-  "port": 8080
-}

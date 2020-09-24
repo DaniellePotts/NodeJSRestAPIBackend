@@ -1,15 +1,7 @@
-const HelloWorldService = require('../services/helloWorldService.js').HelloWorldService;
-
-class HelloWorldController {
-    constructor() {
-        this.helloWorldService = new HelloWorldService();
-    }
-
-    sayHello(name) {
-        return this.helloWorldService.sayHello(name);
-    }
-}
+const helloWorldService = require('services/helloWorldService');
 
 module.exports = {
-    HelloWorldController,
+    sayHello(name) {
+        return helloWorldService.sayHello(name);
+    },
 };

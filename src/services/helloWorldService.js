@@ -1,9 +1,5 @@
-class HelloWorldService {
+module.exports = {
     sayHello(name) {
         return `Hello ${name}!`;
-    }
-}
-
-module.exports = {
-    HelloWorldService,
+    },
 };

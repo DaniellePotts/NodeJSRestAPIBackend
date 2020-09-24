@@ -1,10 +1,10 @@
 const AWS = require('aws-sdk');
 
-const Logger = require('../logging/Logger').Logger;
+const Logger = require('logging/logger').Logger;
 
 const logger = new Logger();
 
-class DynamoDBClient {
+module.exports = {
     constructor(region) {
         try {
             AWS.config.update({
@@ -14,8 +14,7 @@ class DynamoDBClient {
         } catch (err) {
             logger.error(err);
         }
-    }
-
+    },
     async get(query) {
         return new Promise((resolve, reject) => {
             this.docClient.get(query, (err, data) => {
@@ -27,26 +26,23 @@ class DynamoDBClient {
                 }
             });
         }).catch((err) => {
+            logger.error(err);
             Promise.reject(err);
         });
-    }
-
+    },
     async put(params) {
         return new Promise((resolve, reject) => {
             this.docClient.put(params, (err, data) => {
                 if (err) {
                     logger.error(err);
-                    reject(err, err.stack);
+                    reject(err);
                 } else {
                     resolve(data);
                 }
             });
         }).catch((err) => {
+            logger.error(err);
             Promise.reject(err);
         });
-    }
-}
-
-module.exports = {
-    DynamoDBClient,
+    },
 };
